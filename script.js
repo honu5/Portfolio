@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
+        //darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
         //body.classList.remove('dark-mode'); 
         //darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
     }
