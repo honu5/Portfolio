@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body.classList.add('dark-mode');
         darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
         //body.classList.remove('dark-mode'); 
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
+        //darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
     }
 
     darkModeToggle.addEventListener('click', () => {
