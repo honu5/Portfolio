@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typingSpeed = 100; 
-    const deletingSpeed = 60; 
-    const delayBeforeTyping = 300;  
-    const delayBeforeDeleting = 1500; 
+    const typingSpeed = 100;
+    const deletingSpeed = 60;
+    const delayBeforeTyping = 300;
+    const delayBeforeDeleting = 1500;
 
     function type() {
         const currentRole = roles[roleIndex];
@@ -49,19 +49,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close mobile nav when a link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
-            if (navLinks.classList.contains('nav-active')) { 
+            if (navLinks.classList.contains('nav-active')) {
                 navLinks.classList.remove('nav-active');
                 burger.classList.remove('toggle');
             }
         });
     });
 
-   
+
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            
+
             if (this.id === 'darkModeToggle') {
-                return; 
+                return;
             }
             e.preventDefault();
 
@@ -106,9 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const sectionObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('fade-in'); 
+                entry.target.classList.add('fade-in');
             } else {
-                entry.target.classList.remove('fade-in'); 
+                entry.target.classList.remove('fade-in');
             }
         });
     }, observerOptions);
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(title);
     });
 
-    
+
     const styleSheet = document.createElement('style');
     styleSheet.innerHTML = `
         .fade-in {
@@ -131,30 +131,39 @@ document.addEventListener('DOMContentLoaded', () => {
     document.head.appendChild(styleSheet);
 
 
-    
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
-    
-    
+    // --- MODIFIED CODE FOR DEFAULT DARK MODE ---
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-        body.classList.add('dark-mode');
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
-        body.classList.remove('dark-mode'); 
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
+
+    // If no theme is saved, or if it's explicitly 'dark', apply dark mode.
+    // Otherwise, if savedTheme is 'light', do nothing (it will naturally be light mode).
+    if (savedTheme === 'light') {
+        // Theme is explicitly 'light', so ensure no dark-mode class and set moon icon
+        body.classList.remove('dark-mode');
+        if (darkModeToggle) { // Check if toggle exists before manipulating innerHTML
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    } else { // savedTheme is 'dark' or null (no preference saved yet)
+        body.classList.add('dark-mode'); // Apply dark mode class
+        if (darkModeToggle) { // Check if toggle exists
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; // Set sun icon for dark mode
+        }
     }
+    // --- END MODIFIED CODE ---
+
 
     darkModeToggle.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
 
-        // Save preference to localStorage
+        // Save preference to localStorage and update icon
         if (body.classList.contains('dark-mode')) {
             localStorage.setItem('theme', 'dark');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         } else {
             localStorage.setItem('theme', 'light');
-            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
     });
 
