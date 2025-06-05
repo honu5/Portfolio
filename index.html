@@ -243,6 +243,14 @@
     <footer>
         <p>&copy; 2025 liranso.</p>
     </footer>
+     <script>
+  (function() {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || savedTheme === null) {
+      document.documentElement.classList.add('dark-mode');
+    }
+  })();
+</script>
 
     <script src="script.js"></script>
 </body>
