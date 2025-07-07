@@ -1,0 +1,25 @@
+{
+  "name": "port",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honu5/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/honu5/Portfolio/issues"
+  },
+  "homepage": "https://github.com/honu5/Portfolio#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {},
+  "description": ""
+}
