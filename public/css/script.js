@@ -38,6 +38,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
+    const sidebar = document.getElementById('sidebar');
+
+    // Sidebar toggle for small screens
+    burger.addEventListener('click', () => {
+        sidebar.classList.toggle('sidebar-active');
+        burger.classList.toggle('toggle');
+    });
+
+    // Close sidebar when a link is clicked
+    sidebar.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (sidebar.classList.contains('sidebar-active')) {
+                sidebar.classList.remove('sidebar-active');
+                burger.classList.remove('toggle');
+            }
+        });
+    });
     const sections = document.querySelectorAll('section');
     const navHeight = document.querySelector('header').offsetHeight;
 
