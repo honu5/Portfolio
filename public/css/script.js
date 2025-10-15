@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Typing Effect
     const typingTextElement = document.getElementById('typing-text');
-    const roles = ["FullStack Developer</>", "Competitive Programmer</>", "Believer-Evangelist</>"];
+    const roles = ["FullStack Developer</>", "AI-Trainer</>", "Prompt Engineer</>", "Competitive Programmer</>", "Believer</>"];
     let roleIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
-    const typingSpeed = 100; 
-    const deletingSpeed = 60; 
+    const typingSpeed = 70; 
+    const deletingSpeed = 40; 
     const delayBeforeTyping = 300;  
     const delayBeforeDeleting = 1500; 
 
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function animateCount(el) {
     const start = +el.dataset.start;
-    const end = +el.dataset.end;
+    const end = +el.dataset.end+2;
     let current = start;
 
     const update = () => {
