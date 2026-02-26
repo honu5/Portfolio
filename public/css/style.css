@@ -456,6 +456,29 @@ body.dark-mode .project-card:hover {
     transition: color 0.3s ease; /* Smooth transition */
 }
 
+.project-skills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin: 10px 20px 12px;
+    padding: 0;
+}
+
+.project-skills li {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 0.78em;
+    color: var(--text-color);
+    background-color: rgba(0, 123, 255, 0.1);
+}
+
+body.dark-mode .project-skills li {
+    background-color: rgba(187, 134, 252, 0.18);
+}
+
 .project-card p {
     padding: 0 20px 20px;
     font-size: 0.95em;
