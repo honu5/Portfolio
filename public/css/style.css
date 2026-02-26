@@ -714,11 +714,11 @@ body.dark-mode .social-links a:hover {
 
 /* Footer */
 footer {
-    height: 100px;
+    height: auto;
     background-color: var(--primary-color);
     color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 10px 20px;
     margin-top: 50px;
     transition: background-color 0.3s ease; /* Smooth transition */
 }
