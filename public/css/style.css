@@ -481,7 +481,7 @@ body.dark-mode .project-skills li {
 
 .project-card p {
     padding: 0 20px 20px;
-    font-size: 0.95em;
+    font-size: 0.88em;
     color: var(--secondary-color);
     transition: color 0.3s ease; /* Smooth transition */
 }
