@@ -298,10 +298,10 @@ nav .logo {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 30px;
+    gap: 20px;
     max-width: 1300px;
     width: 100%;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
     
 }
 
@@ -312,8 +312,7 @@ nav .logo {
 .hero-left, .hero-right {
     flex: 2;
     min-width: 300px;
-  
-    padding: 20px;
+    padding: 12px;
    
     
     transition: background-color 0.3s ease, box-shadow 0.3s ease; 
@@ -325,20 +324,20 @@ body.dark-mode .hero-right {
 
 
 .profile-img {
-    width: 500px;
-    height: 500px;
+    width: 360px;
+    height: 360px;
     object-fit: cover;
     border: 5px solid var(--primary-color);
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     
    
     transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
 }
 
 .roles {
-    font-size: 1.8em;
+    font-size: 1.35em;
     font-weight: 600;
-    margin-top: 15px;
+    margin-top: 8px;
     min-height: 1.2em;
     text-align: center;
 }
@@ -355,13 +354,13 @@ body.dark-mode .hero-right {
 }
 
 .hero-right h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 2.1em;
+    margin-bottom: 12px;
 }
 
 .hero-right p {
-    font-size: 1.1em;
-    margin-bottom: 30px;
+    font-size: 0.98em;
+    margin-bottom: 16px;
 }
 
 .btn-download-cv {

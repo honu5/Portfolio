@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function animateCount(el) {
     const start = +el.dataset.start;
-    const end = +el.dataset.end+2;
+        const end = +el.dataset.end;
     let current = start;
 
     const update = () => {
