@@ -34,55 +34,71 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(type, currentSpeed);
     }
 
-    type();
+    if (typingTextElement) {
+        type();
+    }
 
     const burger = document.querySelector('.burger');
     const navLinks = document.querySelector('.nav-links');
     const sidebar = document.getElementById('sidebar');
 
     // Sidebar toggle for small screens
-    burger.addEventListener('click', () => {
-        sidebar.classList.toggle('sidebar-active');
-        burger.classList.toggle('toggle');
-    });
+    if (burger && sidebar) {
+        burger.addEventListener('click', () => {
+            sidebar.classList.toggle('sidebar-active');
+            burger.classList.toggle('toggle');
+        });
 
-    // Close sidebar when a link is clicked
-    sidebar.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (sidebar.classList.contains('sidebar-active')) {
+        // Close sidebar when a link is clicked
+        sidebar.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebar.classList.contains('sidebar-active')) {
+                    sidebar.classList.remove('sidebar-active');
+                    burger.classList.remove('toggle');
+                }
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            const clickedInsideSidebar = sidebar.contains(event.target);
+            const clickedBurger = burger.contains(event.target);
+
+            if (!clickedInsideSidebar && !clickedBurger && sidebar.classList.contains('sidebar-active')) {
                 sidebar.classList.remove('sidebar-active');
                 burger.classList.remove('toggle');
             }
         });
-    });
+    }
     const sections = document.querySelectorAll('section');
-    const navHeight = document.querySelector('header').offsetHeight;
-
-    burger.addEventListener('click', () => {
-        navLinks.classList.toggle('nav-active');
-        burger.classList.toggle('toggle');
-    });
+    const header = document.querySelector('header');
+    const navHeight = header ? header.offsetHeight : 0;
 
     // Close mobile nav when a link is clicked
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('nav-active')) { 
-                navLinks.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-            }
+    if (navLinks && burger) {
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('nav-active')) {
+                    navLinks.classList.remove('nav-active');
+                    burger.classList.remove('toggle');
+                }
+            });
         });
-    });
+    }
 
    
     document.querySelectorAll('nav a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            
             if (this.id === 'darkModeToggle') {
                 return; 
             }
-            e.preventDefault();
 
-            const targetId = this.getAttribute('href').substring(1);
+            const href = this.getAttribute('href');
+            if (!href || !href.startsWith('#')) {
+                return;
+            }
+
+            e.preventDefault();
+            const targetId = href.substring(1);
             const targetSection = document.getElementById(targetId);
 
             if (targetSection) {
@@ -104,14 +120,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        navLinks.querySelectorAll('a').forEach(link => {
-            if (link.id !== 'darkModeToggle') {
-                link.classList.remove('active');
-                if (link.getAttribute('href') && link.getAttribute('href').includes(current)) {
-                    link.classList.add('active');
+        if (navLinks) {
+            navLinks.querySelectorAll('a').forEach(link => {
+                if (link.id !== 'darkModeToggle') {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') && link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
+                    }
                 }
-            }
-        });
+            });
+        }
     });
 
     const observerOptions = {
@@ -157,23 +175,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
-        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
-        
-        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; 
+        if (darkModeToggle) {
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
     }
 
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
+    if (darkModeToggle) {
+        darkModeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
 
-        // Save preference to localStorage
-        if (body.classList.contains('dark-mode')) {
-            localStorage.setItem('theme', 'dark');
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; 
-        } else {
-            localStorage.setItem('theme', 'light');
-            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; // Change icon to moon
-        }
-    });
+            // Save preference to localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            } else {
+                localStorage.setItem('theme', 'light');
+                darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            }
+        });
+    }
 
 });
 
